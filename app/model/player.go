@@ -15,17 +15,15 @@ type PlayerInterface interface {
 
 type Player struct {
 	*AnimatedObject
-	*MovableObject
-	Target    pixel.Vec
-	JumpSpeed float64
+	MovableObject
+	Target pixel.Vec
 }
 
 func NewPlayer(picture pixel.Picture) *Player {
-	return &Player{
+	p := &Player{
 		AnimatedObject: NewAnimatedObject(picture, 256, 256),
-		MovableObject:  NewMovableDisplayObject(250),
-		JumpSpeed:      100,
 	}
+	return p
 }
 
 func (p *Player) SetTarget(target pixel.Vec) {

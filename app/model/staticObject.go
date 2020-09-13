@@ -24,14 +24,14 @@ type StaticObjectInterface interface {
 }
 
 type StaticObject struct {
-	*MatObject
+	MatObject
 	sprite *pixel.Sprite
 }
 
 func NewStaticObject(picture pixel.Picture) *StaticObject {
 	return &StaticObject{
-		sprite:    pixel.NewSprite(picture, picture.Bounds()),
-		MatObject: NewMatObject(pixel.V(0, 0), 0, pixel.ZV, pixel.V(1, 1), pixel.ZV),
+		sprite: pixel.NewSprite(picture, picture.Bounds()),
+		//MatObject: NewMatObject(pixel.V(0, 0), 0, pixel.ZV, pixel.V(1, 1), pixel.ZV),
 	}
 }
 

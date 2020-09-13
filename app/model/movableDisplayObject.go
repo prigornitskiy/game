@@ -13,12 +13,6 @@ type MovableObject struct {
 	Velocity float64
 }
 
-func NewMovableDisplayObject(velocity float64) *MovableObject {
-	return &MovableObject{
-		Velocity: velocity,
-	}
-}
-
 func (o *MovableObject) Move(from pixel.Vec, to pixel.Vec, dt float64) pixel.Vec {
 	d := game.Distance(from, to)
 

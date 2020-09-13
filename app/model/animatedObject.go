@@ -10,8 +10,7 @@ type AnimatedInterface interface {
 }
 
 type AnimatedObject struct {
-	*MatObject
-	Frames             []pixel.Rect
+	MatObject
 	Sprites            []*pixel.Sprite
 	CurrentFrame       int
 	AnimationSpeed     float64
@@ -33,9 +32,7 @@ func NewAnimatedObject(picture pixel.Picture, sizeX float64, sizeY float64) *Ani
 	}
 
 	return &AnimatedObject{
-		Frames:    frames,
-		Sprites:   sprites,
-		MatObject: NewMatObject(pixel.V(0, 0), 0, pixel.ZV, pixel.V(1, 1), pixel.ZV),
+		Sprites: sprites,
 	}
 }
 

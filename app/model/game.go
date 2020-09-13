@@ -31,13 +31,12 @@ func (g *Game) Init() {
 	p := NewPlayer(g.pictureRepository.GetPicture("player"))
 	p.Position.X = 300
 	p.Position.Y = 300
+	p.Velocity = 250
 	p.AnimationSpeed = .1
 	p.Target = pixel.Vec{X: 1000, Y: 300}
 	g.player = p
 
-	//tiles:=NewSpriteList(g.pictureRepository.GetPicture("tiles"), 64, 64)
-
-	//g.GameLayer = append(g.player, NewTile(g.pictureRepository.GetPicture("tiles"), 0))
+	g.GameLayer.AddItem(g.player)
 }
 
 func (g *Game) Draw(win *pixelgl.Window, dt float64) {
@@ -51,12 +50,7 @@ func (g *Game) Draw(win *pixelgl.Window, dt float64) {
 		g.player.SetTarget(pixel.Vec{X: 1024, Y: 300})
 	}
 
-	/*
-		for _, s := range g.staticObjects {
-			s.GetSprite().Draw(win, s.GetMatrix())
-		}*/
-	//g.player.Update(win,dt)
 	g.player.Animate(dt)
 	g.player.Update(win, dt)
-	g.player.GetSprite().Draw(win, g.player.GetMatrix())
+	g.GameLayer.Draw(win)
 }

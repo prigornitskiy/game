@@ -5,10 +5,10 @@ import (
 )
 
 type MatObjectInterface interface {
-	GetMatrix() pixel.Matrix
 	SetPosition(p pixel.Vec) MatObjectInterface
 	SetScale(s pixel.Vec) MatObjectInterface
 	SetRotate(rotate float64) MatObjectInterface
+	GetMatrix() pixel.Matrix
 }
 
 type MatObject struct {
@@ -17,16 +17,6 @@ type MatObject struct {
 	RotateAround pixel.Vec
 	Scale        pixel.Vec
 	ScaleAround  pixel.Vec
-}
-
-func NewMatObject(position pixel.Vec, rotate float64, rotateAround pixel.Vec, scale pixel.Vec, scaleAround pixel.Vec) *MatObject {
-	return &MatObject{
-		Position:     position,
-		Rotate:       rotate,
-		RotateAround: rotateAround,
-		Scale:        scale,
-		ScaleAround:  scaleAround,
-	}
 }
 
 func (o *MatObject) SetPosition(p pixel.Vec) MatObjectInterface {
