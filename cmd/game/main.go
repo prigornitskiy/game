@@ -24,7 +24,7 @@ func run() {
 	}
 
 	win.SetSmooth(true)
-
+	win.SetVSync(true)
 	pr := domain.NewPictureRepository()
 
 	loader := domain.NewLoader(pr)
@@ -40,22 +40,25 @@ func run() {
 		panic(err)
 	}
 
+	err = loader.LoadPicture("boom", "img/boom.png")
+
+	if err != nil {
+		panic(err)
+	}
+
 	g := model.NewGame(pr)
 	g.Init()
 	last := time.Now()
 
 	frames := 0
 	second := time.Tick(time.Second)
-	verticalSync := time.Tick(time.Second / 60)
 	for !win.Closed() {
+		dt := time.Since(last).Seconds()
+		last = time.Now()
+		g.Draw(win, dt)
+		frames++
+		win.Update()
 		select {
-		case <-verticalSync:
-			dt := time.Since(last).Seconds()
-			last = time.Now()
-			g.Draw(win, dt)
-			frames++
-			win.Update()
-			break
 		case <-second:
 			win.SetTitle(fmt.Sprintf("%s | FPS: %d", cfg.Title, frames))
 			frames = 0

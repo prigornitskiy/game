@@ -1,6 +1,8 @@
 package model
 
-import "github.com/faiface/pixel"
+import (
+	"github.com/faiface/pixel"
+)
 
 type LayerInterface interface {
 	DrawableInterface
