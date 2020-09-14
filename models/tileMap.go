@@ -1,5 +1,8 @@
 package models
 
+/*
+Старый код: нужный в app/model/
+
 import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
@@ -62,3 +65,5 @@ func (t *TileMap) Draw(win *pixelgl.Window, dt float64) {
 
 	t.batch.Draw(win)
 }
+
+*/
