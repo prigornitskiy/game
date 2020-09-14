@@ -18,7 +18,7 @@ type Menu struct {
 	items []MenuItemsInterface
 }
 
-func NewMenu(picture pixel.Picture) *Menu {
+func NewMenu(picture domain.PictureInterface) *Menu {
 	m := &Menu{}
 	return m
 }

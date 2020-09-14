@@ -1,6 +1,7 @@
 package model
 
 import (
+	"game/app/domain"
 	"github.com/faiface/pixel"
 )
 
@@ -17,7 +18,7 @@ type AnimatedObject struct {
 	SinceLastAnimation float64
 }
 
-func NewAnimatedObject(picture pixel.Picture, sizeX float64, sizeY float64) *AnimatedObject {
+func NewAnimatedObject(picture domain.PictureInterface, sizeX float64, sizeY float64) *AnimatedObject {
 	var frames []pixel.Rect
 	for x := picture.Bounds().Min.X; x < picture.Bounds().Max.X; x += sizeX {
 		for y := picture.Bounds().Min.Y; y < picture.Bounds().Max.Y; y += sizeY {

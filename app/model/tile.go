@@ -1,15 +1,13 @@
 package model
 
-import (
-	"github.com/faiface/pixel"
-)
+import "game/app/domain"
 
 type Tile struct {
 	*StaticObject
 	Type int
 }
 
-func NewTile(picture pixel.Picture, t int) *Tile {
+func NewTile(picture domain.PictureInterface, t int) *Tile {
 	return &Tile{
 		Type:         t,
 		StaticObject: NewStaticObject(picture),

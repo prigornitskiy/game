@@ -1,6 +1,7 @@
 package model
 
 import (
+	"game/app/domain"
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 )
@@ -28,10 +29,9 @@ type StaticObject struct {
 	sprite *pixel.Sprite
 }
 
-func NewStaticObject(picture pixel.Picture) *StaticObject {
+func NewStaticObject(picture domain.PictureInterface) *StaticObject {
 	return &StaticObject{
 		sprite: pixel.NewSprite(picture, picture.Bounds()),
-		//MatObject: NewMatObject(pixel.V(0, 0), 0, pixel.ZV, pixel.V(1, 1), pixel.ZV),
 	}
 }
 

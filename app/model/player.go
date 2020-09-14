@@ -1,6 +1,7 @@
 package model
 
 import (
+	"game/app/domain"
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
 )
@@ -19,7 +20,7 @@ type Player struct {
 	Target pixel.Vec
 }
 
-func NewPlayer(picture pixel.Picture) *Player {
+func NewPlayer(picture domain.PictureInterface) *Player {
 	p := &Player{
 		AnimatedObject: NewAnimatedObject(picture, 256, 256),
 	}
@@ -31,12 +32,12 @@ func (p *Player) SetTarget(target pixel.Vec) {
 }
 
 func (p *Player) Update(win *pixelgl.Window, dt float64) {
+	p.Animate(dt)
 	newPosition := p.Move(p.Position, p.Target, dt)
 	if newPosition.X < p.Position.X {
 		p.Scale = pixel.V(-1, 1)
 	} else if newPosition.X > p.Position.X {
 		p.Scale = pixel.V(1, 1)
 	}
-
 	p.SetPosition(newPosition)
 }

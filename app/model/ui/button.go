@@ -14,7 +14,7 @@ type Button struct {
 	Text string
 }
 
-func NewButton(picture pixel.Picture, text string) *Button {
+func NewButton(picture domain.PictureInterface, text string) *Button {
 	return &Button{
 		StaticObject: model.NewStaticObject(picture),
 		Text:         text,

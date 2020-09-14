@@ -8,6 +8,7 @@ import (
 type MovableObjectInterface interface {
 	Move(from pixel.Vec, to pixel.Vec, dt float64) pixel.Vec
 	SetVelocity(v float64) MovableObjectInterface
+	GetVelocity() float64
 }
 
 type MovableObject struct {
@@ -17,6 +18,10 @@ type MovableObject struct {
 func (o *MovableObject) SetVelocity(v float64) MovableObjectInterface {
 	o.Velocity = v
 	return o
+}
+
+func (o *MovableObject) GetVelocity() float64 {
+	return o.Velocity
 }
 
 func (o *MovableObject) Move(from pixel.Vec, to pixel.Vec, dt float64) pixel.Vec {
